@@ -1,0 +1,74 @@
+CREATE DATABASE db_LibraryManagement;
+SHOW DATABASES;
+use db_LibraryManagement;
+CREATE TABLE table_publisher (
+PublisherName VARCHAR(50) PRIMARY KEY NOT NULL,
+PublisherAddress VARCHAR(100) NOT NULL,
+PublisherPhone VARCHAR(20) NOT NULL
+);
+CREATE TABLE table_book (
+  BookID INT PRIMARY KEY AUTO_INCREMENT,
+  Book_Title VARCHAR(100) NOT NULL,
+  PublisherName VARCHAR(100) NOT NULL
+);
+CREATE TABLE table_library_branch (
+library_branch_BranchID INT PRIMARY KEY NOT NULL auto_increment ,
+library_branch_BranchName VARCHAR(100) NOT NULL, library_branch_BranchAddress VARCHAR(200) NOT NULL
+);
+SELECT*FROM table_library_branch;
+SELECT * FROM table_library_branch;
+CREATE TABLE table_borrower (
+  CardNo INT PRIMARY KEY AUTO_INCREMENT,
+  BorrowerName VARCHAR(100) NOT NULL,
+  BorrowerAddress VARCHAR(200) NOT NULL,
+  BorrowerPhone VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE table_book_copies (
+    CopiesID INT PRIMARY KEY NOT NULL,
+    BookID INT NOT NULL,
+    BranchID INT NOT NULL,
+    NoOfCopies INT NOT NULL
+);
+
+CREATE TABLE table_book_authors (
+    AuthorID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    BookID INT NOT NULL,
+    CONSTRAINT fk_book_id3
+    FOREIGN KEY (BookID)
+    REFERENCES table_book(BookID) 
+    ON UPDATE CASCADE ON DELETE CASCADE,
+    AuthorName VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE book (
+
+  `bookid` char(13) NOT NULL,
+
+  `title` varchar(80) NOT NULL,
+
+  `author` varchar(80) NOT NULL,
+
+  `category` varchar(80) NOT NULL,
+
+  `price` int(4) unsigned NOT NULL,
+
+  `copies` int(10) unsigned NOT NULL
+
+);
+INSERT INTO book (`bookid`, `title`, `author`, `category`, `price`, `copies`) VALUES
+
+('9788654552277', 'Advance Engineering Mathematics, john wiley and sons inc', 'maths', 98, 20),
+
+('0964161484100', 'A Textbook of Engineering', 'S.P Shrestha, H.D Chaudhary,P.R Pokharel', 'maths', 654, 25),
+
+('6901142585540', 'A book on C', 'Benjamin/cumming', 'C Prograamming', 600, 23),
+
+('9094996245442', 'Let us C', 'Yashavant Kanetkar', 'C Programming', 500, 25),
+
+('8653491200700', 'Fundamentels of Engineering Drawing', 'W.J Luzadder', 'Engineering Deawing', 432, 20);
+
+('6853491200900', 'Elementary Engineering Drawing', 'N.D Bhatt', 'Engineering Deawing', 4322, 26);
+show table status
+
+
